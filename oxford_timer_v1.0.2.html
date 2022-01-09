@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+		<script>
+			var date = 11
+			var hour = 21
+			var minute = 0
+			var second = 0
+			
+			function displayTime() {
+				var today = new Date();
+				var days = date-today.getDate();
+				var seconds = second-today.getSeconds();
+				var minutes = minute-today.getMinutes();
+				var hours = hour-today.getHours();
+				seconds = seconds + 60*minutes + 3600*hours + 86400*days - 1
+				var ms = new Date().getTime()
+				ms = 1000-ms%1000
+				if (ms<10) {
+					ms = '00'+ms
+				} else if (ms<100) {
+					ms = '0'+ms
+				}
+
+				var time = seconds+'.'+ms
+
+				document.getElementById("time").innerHTML=time
+				window.setTimeout(displayTime,23)
+			}
+		</script>
+		<style>
+			#time {
+				font-size: 100px;
+				font-family: "Lucida Handwriting", "Courier New", cursive;
+				font-weight: 700;
+			}
+			span {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+				border: 15px solid #002147;
+				padding: 75px;
+				background-color: white;
+			}
+			body {
+				background-color: #F7a0c9;
+			}
+		</style>
+	</head>
+	<body>
+		<span id="time"></span>
+		<script>
+			displayTime();
+		</script>
+	</body>
+</html>
